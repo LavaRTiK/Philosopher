@@ -2,23 +2,21 @@
 Console.OutputEncoding = System.Text.Encoding.UTF8;
 Logger logger = new Logger();
 logger.Start();
+List<Philosoph> philosophers = new List<Philosoph>();
 TableForPhilosophers tableForPhilosophers = new TableForPhilosophers(logger);
-Philosoph philosoph1 = new Philosoph("Fill1",logger,tableForPhilosophers);
-Philosoph philosoph2 = new Philosoph("Fill2",logger, tableForPhilosophers);
-Philosoph philosoph3 = new Philosoph("Fill3", logger, tableForPhilosophers);
-Philosoph philosoph4 = new Philosoph("Fill4", logger, tableForPhilosophers);
-Philosoph philosoph5 = new Philosoph("Fill5", logger, tableForPhilosophers);
-philosoph1.PhilosopherLive();
-philosoph2.PhilosopherLive();
-philosoph3.PhilosopherLive();
-philosoph4.PhilosopherLive();
-philosoph5.PhilosopherLive();
+for (int i = 1; i < 5; i++)
+{
+    philosophers.Add(new Philosoph($"Fill{i}", logger, tableForPhilosophers));
+}
+foreach (var philosoph in philosophers)
+{
+    philosoph.PhilosopherLive();
+}
 
 Console.ReadLine();
 logger.Stop();
 logger.Dispose();
-philosoph1.PhilsopherDead();
-philosoph2.PhilsopherDead();
-philosoph3.PhilsopherDead();
-philosoph4.PhilsopherDead();
-philosoph5.PhilsopherDead();
+foreach (var philosoph in philosophers)
+{
+    philosoph.PhilsopherDead();
+}

@@ -55,10 +55,16 @@ namespace Philosopher
         }
         private void PhilosopherLogic()
         {
-            table.RegisterGust(this);
+            table.RegisetGuest(this);
             while (!_cancelled)
             {
-                ResetHungry();
+                if (table.RequstToEat(this))
+                {
+                    ResetHungry();
+                    _logger.LogMessage("Info", $"{Name} Пішов їсти");
+                    Thread.Sleep(3500);
+                    table.DisposableForks(this);
+                }
                 Thinks();
 
             };
