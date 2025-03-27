@@ -8,6 +8,7 @@ namespace Philosopher
 {
     public enum PhilosopherState
     {
+        Wait,
         isEating,
         Thinks,
     }

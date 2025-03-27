@@ -1,3 +1,24 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
-//перечитать
+﻿using Philosopher;
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+Logger logger = new Logger();
+logger.Start();
+TableForPhilosophers tableForPhilosophers = new TableForPhilosophers(logger);
+Philosoph philosoph1 = new Philosoph("Fill1",logger,tableForPhilosophers);
+Philosoph philosoph2 = new Philosoph("Fill2",logger, tableForPhilosophers);
+Philosoph philosoph3 = new Philosoph("Fill3", logger, tableForPhilosophers);
+Philosoph philosoph4 = new Philosoph("Fill4", logger, tableForPhilosophers);
+Philosoph philosoph5 = new Philosoph("Fill5", logger, tableForPhilosophers);
+philosoph1.PhilosopherLive();
+philosoph2.PhilosopherLive();
+philosoph3.PhilosopherLive();
+philosoph4.PhilosopherLive();
+philosoph5.PhilosopherLive();
+
+Console.ReadLine();
+logger.Stop();
+logger.Dispose();
+philosoph1.PhilsopherDead();
+philosoph2.PhilsopherDead();
+philosoph3.PhilsopherDead();
+philosoph4.PhilsopherDead();
+philosoph5.PhilsopherDead();
